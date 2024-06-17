@@ -88,13 +88,13 @@ public class ApiStack extends Stack {
 		List<String> apiPackagingInstructions = Arrays.asList(
 				"/bin/sh", "-c",
 				"""
-				pwd && ls -l && \
-				mvn --no-transfer-progress clean package && \
-				cp target/function.zip /asset-output/\
-				""");
+						pwd && ls -l && \
+						mvn --no-transfer-progress clean package && \
+						cp target/function.zip /asset-output/\
+						""");
 
 		BundlingOptions.Builder apiBuilderOptions = BundlingOptions.builder().command(apiPackagingInstructions)
-				.image(software.amazon.awscdk.services.lambda.Runtime.JAVA_11.getBundlingImage()).volumes(
+				.image(software.amazon.awscdk.services.lambda.Runtime.JAVA_17.getBundlingImage()).volumes(
 						singletonList(
 								// Mount local .m2 repo to avoid download all the dependencies again inside the
 								// container
@@ -121,7 +121,7 @@ public class ApiStack extends Stack {
 
 		Function apiLambda = new Function(this, "OpenAPIBlogLambda",
 				FunctionProps.builder()
-						.runtime(software.amazon.awscdk.services.lambda.Runtime.JAVA_11)
+						.runtime(software.amazon.awscdk.services.lambda.Runtime.JAVA_17)
 						.code(apiCode)
 						.handler("io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest")
 						.memorySize(512)
@@ -179,13 +179,13 @@ public class ApiStack extends Stack {
 		List<String> apiDocPackagingInstructions = Arrays.asList(
 				"/bin/sh", "-c",
 				"""
-				pwd && ls -l && \
-				widdershins --search false --language_tabs 'javascript:JavaScript' 'python:Python' 'java:Java' --summary openapi.yaml -o /openapi/slate/source/index.html.md && \
-				cd /openapi/slate && \
-				bundle exec middleman build --clean && \
-				ls -la build/* && \
-				cp -a build/. /asset-output/\
-				""");
+						pwd && ls -l && \
+						widdershins --search false --language_tabs 'javascript:JavaScript' 'python:Python' 'java:Java' --summary openapi.yaml -o /openapi/slate/source/index.html.md && \
+						cd /openapi/slate && \
+						bundle exec middleman build --clean && \
+						ls -la build/* && \
+						cp -a build/. /asset-output/\
+						""");
 
 		BundlingOptions.Builder apiDocBuilderOptions = BundlingOptions.builder().command(apiPackagingInstructions)
 				.image(apDocImage)
