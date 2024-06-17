@@ -25,10 +25,10 @@
       "aws",
       "aws-cn"
     ],
-    "RepositoryString": "lukepopp/aws-blog-openapi-cdkv2",
+    "RepositoryString": "UniqueElphie/aws-cdk-openapi",
     "RepositoryBranch": "main",
-    "CodestarConnectionArn": "arn:aws:codestar-connections:ap-southeast-2:067566784356:connection/27053bd0-ce64-4c0b-9381-e31475918dfa",
-    "CodeArtifactDomain": "openapiblog",
-    "CodeArtifactRepository": "openapiblog"
+    "CodestarConnectionArn": "arn:aws:codestar-connections:ap-southeast-1:850063548647:connection/ddd93ffc-1fd7-42d8-9791-c098e90d0f02",
+    "CodeArtifactDomain": "apidev",
+    "CodeArtifactRepository": "ApiDevelopment"
   }
 }
