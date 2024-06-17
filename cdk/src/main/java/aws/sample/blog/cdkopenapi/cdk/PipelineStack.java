@@ -68,20 +68,20 @@ public class PipelineStack extends Stack {
 						Arn.format(
 								ArnComponents.builder()
 										.service("codeartifact")
-										.resource(String.format("repository/%s/%s", codeArtifactDomainName,
+										.resource("repository/%s/%s".formatted(codeArtifactDomainName,
 												codeArtifactRepositoryName))
 										.build(),
 								this),
 						Arn.format(
 								ArnComponents.builder()
 										.service("codeartifact")
-										.resource(String.format("domain/%s", codeArtifactDomainName))
+										.resource("domain/%s".formatted(codeArtifactDomainName))
 										.build(),
 								this),
 						Arn.format(
 								ArnComponents.builder()
 										.service("codeartifact")
-										.resource(String.format("package/%s/%s/*", codeArtifactDomainName,
+										.resource("package/%s/%s/*".formatted(codeArtifactDomainName,
 												codeArtifactRepositoryName))
 										.build(),
 								this)))
